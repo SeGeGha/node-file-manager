@@ -1,0 +1,24 @@
+{
+  "name": "File Manager",
+  "version": "1.0.0",
+  "description": "Task implementation https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/file-manager/assignment.md",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeGeGha/node-file-manager.git"
+  },
+  "author": "Siarhei Sudakou",
+  "license": "ISC",
+  "keywords": [
+    "nodejs",
+    "filemanager",
+    "cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/SeGeGha/node-file-manager/issues"
+  },
+  "homepage": "https://github.com/SeGeGha/node-file-manager#readme"
+}
