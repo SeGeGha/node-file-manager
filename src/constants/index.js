@@ -6,4 +6,4 @@ export const OPERATION_FAILED = 'Operation failed';
 
 export const COMMANDS = {
     EXIT: '.exit',
-}
+};
