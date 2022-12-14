@@ -19,11 +19,11 @@ export const init = () => {
 
     const readlineInterface = createInterface({ input, output });
 
-    readlineInterface.on('line', line => {
+    readlineInterface.on('line', async (line) => {
         if (line === EXIT_COMMAND) readlineInterface.close();
 
         const [ command, args ] = parseCommandLine(line);
-        const result = callFuse(operationManager[command], args);
+        const result = await callFuse(operationManager[command], args);
         if (result) printMessage(result);
 
         printCwdMessage();

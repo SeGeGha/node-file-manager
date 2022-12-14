@@ -1,0 +1,1 @@
+export const sortElements = (firstEl, secondEl) => firstEl.type.localeCompare(secondEl.type);

@@ -4,6 +4,9 @@ export const DEFAULT_USERNAME = 'Anonymous';
 export const INVALID_INPUT = 'Invalid input';
 export const OPERATION_FAILED = 'Operation failed';
 
+export const FILE_TYPE = 'file';
+export const DIRECTORY_TYPE = 'directory';
+
 export const EXIT_COMMAND = '.exit';
 
 export const OS_COMMAND_ARGUMENTS = {
