@@ -1,31 +1,36 @@
 import { createInterface } from 'readline/promises';
 import { stdin as input, stdout as output } from 'process';
 
-import { exit } from './exit.js';
 import { user } from './userInfo.js';
-import { errorHandler } from './errorHandler.js';
 
 import { operationManager } from './commands/operationManager.js';
 
 import { printMessage } from '../utils/printMessage.js';
-import { parseCommand } from '../utils/parseCommand.js';
+import { parseCommandLine } from '../utils/parseCommandLine.js';
+import { callFuse } from '../utils/callFuse.js';
 
 import { EXIT_COMMAND } from '../constants/index.js';
 
+const printCwdMessage = () => printMessage(`You are currently in ${user.cwd}\n`);
+
 export const init = () => {
     printMessage(`Welcome to the File Manager, ${user.name}!`);
-    printMessage(`You are currently in ${user.homedir}`)
+    printCwdMessage();
 
     const readlineInterface = createInterface({ input, output });
 
     readlineInterface.on('line', line => {
         if (line === EXIT_COMMAND) readlineInterface.close();
 
-        const [ command, ...args ] = parseCommand(line);
-        const callback = operationManager[command] || errorHandler.invalidInput;
+        const [ command, args ] = parseCommandLine(line);
+        const result = callFuse(operationManager[command], args);
+        if (result) printMessage(result);
 
-        callback(args);
+        printCwdMessage();
     });
 
-    readlineInterface.on('close', exit);
+    readlineInterface.on('close', () => {
+        printMessage(`Thank you for using File Manager, ${user.name}, goodbye!`);
+        process.exit();
+    });
 };

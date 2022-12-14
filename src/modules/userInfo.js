@@ -20,6 +20,10 @@ class User {
         return this.__homedir;
     }
 
+    set cwd (cwd) {
+        this.__cwd = cwd;
+    }
+
     get cwd () {
         return this.__cwd;
     }
