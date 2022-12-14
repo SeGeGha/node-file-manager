@@ -1,5 +1,5 @@
-import { exit } from './commands/exit.js';
-import { operationManager } from './operationManager.js';
+import { exit } from './commands/exit/index.js';
+import { operationManager } from './commands/operationManager.js';
 
 import { user } from './userInfo.js';
 import { errorHandler } from './errorHandler.js';
