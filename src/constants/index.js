@@ -7,6 +7,11 @@ export const OPERATION_FAILED = 'Operation failed';
 export const FILE_TYPE = 'file';
 export const DIRECTORY_TYPE = 'directory';
 
+export const DIRENT_PROPS = {
+    NAME: 'name',
+    TYPE: 'type',
+};
+
 export const EXIT_COMMAND = '.exit';
 
 export const OS_COMMAND_ARGUMENTS = {
