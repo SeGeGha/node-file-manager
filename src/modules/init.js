@@ -1,7 +1,7 @@
 import { createInterface } from 'readline/promises';
 import { stdin as input, stdout as output } from 'process';
 
-import { appData } from './appData.js';
+import { appData } from "./appData.js";
 
 import { operationManager } from './commands/operationManager.js';
 
@@ -11,11 +11,11 @@ import { callFuse } from '../utils/callFuse.js';
 
 import { EXIT_COMMAND } from '../constants/index.js';
 
-const printCwdMessage = () => printMessage(`You are currently in ${appData.cwd}\n`);
-
 export const init = () => {
-    printMessage(`Welcome to the File Manager, ${appData.username}!`);
-    printCwdMessage();
+    const { messages } = appData;
+
+    printMessage(messages.start);
+    printMessage(messages.cwd);
 
     const readlineInterface = createInterface({ input, output });
 
@@ -23,14 +23,14 @@ export const init = () => {
         if (line === EXIT_COMMAND) readlineInterface.close();
 
         const [ command, args ] = parseCommandLine(line);
-        const result = await callFuse(operationManager[command], args);
-        if (result) printMessage(result);
 
-        printCwdMessage();
+        await callFuse(operationManager[command], args);
+
+        printMessage(appData.messages.cwd);
     });
 
     readlineInterface.on('close', () => {
-        printMessage(`Thank you for using File Manager, ${appData.username}, goodbye!`);
+        printMessage(messages.exit);
         process.exit();
     });
 };

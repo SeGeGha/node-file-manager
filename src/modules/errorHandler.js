@@ -1,6 +1,8 @@
+import { printMessage } from '../utils/printMessage.js';
+
 import { INVALID_INPUT, OPERATION_FAILED } from '../constants/index.js';
 
 export const errorHandler = {
-    invalidInput: () => INVALID_INPUT,
-    failedOperation: () => OPERATION_FAILED,
+    invalidInput: () => printMessage(INVALID_INPUT),
+    failedOperation: () => printMessage(OPERATION_FAILED),
 };

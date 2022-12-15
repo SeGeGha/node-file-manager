@@ -5,7 +5,7 @@ import { errorHandler } from '../../errorHandler.js';
 
 import { sortDirents } from './helpers/sortDirents.js';
 
-import { FILE_TYPE, DIRECTORY_TYPE } from '../../../constants/index.js';
+import { DIRENT_TYPES } from '../../../constants/index.js';
 
 export const ls = async () => {
     try {
@@ -16,7 +16,7 @@ export const ls = async () => {
 
             if (isFile || isDirectory) acc.push({
                 name: dirent.name,
-                type: isFile ? FILE_TYPE : DIRECTORY_TYPE,
+                type: isFile ? DIRENT_TYPES.FILE : DIRENT_TYPES.DIRECTORY,
             });
 
             return acc;

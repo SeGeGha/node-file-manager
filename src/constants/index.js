@@ -4,12 +4,14 @@ export const DEFAULT_USERNAME = 'Anonymous';
 export const INVALID_INPUT = 'Invalid input';
 export const OPERATION_FAILED = 'Operation failed';
 
-export const FILE_TYPE = 'file';
-export const DIRECTORY_TYPE = 'directory';
-
 export const DIRENT_PROPS = {
     NAME: 'name',
     TYPE: 'type',
+};
+
+export const DIRENT_TYPES = {
+    FILE: 'file',
+    DIRECTORY: 'directory',
 };
 
 export const EXIT_COMMAND = '.exit';
