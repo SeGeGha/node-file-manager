@@ -1,6 +1,9 @@
 export const USERNAME_PREFIX = '--username';
 export const DEFAULT_USERNAME = 'Anonymous';
 
+export const GHZ = 'GHz';
+export const CPU_SEPARATOR = 'CPU @';
+
 export const INVALID_INPUT = 'Invalid input';
 export const OPERATION_FAILED = 'Operation failed';
 
