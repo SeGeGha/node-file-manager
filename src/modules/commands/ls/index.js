@@ -24,6 +24,6 @@ export const ls = async () => {
 
         console.table(dirents.sort(sortDirents));
     } catch (error) {
-        return errorHandler.failedOperation();
+        errorHandler.failedOperation();
     }
 };

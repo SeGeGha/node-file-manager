@@ -32,7 +32,7 @@ class AppData {
         return {
             start: `Welcome to the File Manager, ${this.username}!`,
             exit: `Thank you for using File Manager, ${this.username}, goodbye!`,
-            cwd: `You are currently in ${appData.cwd}`,
+            cwd: `You are currently in ${this.cwd}`,
         }
     }
 }
