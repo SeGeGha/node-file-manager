@@ -1,10 +1,8 @@
-import { sep } from 'path';
+import { resolve } from 'path';
 
-import { user } from '../../userInfo.js';
+import { appData } from '../../appData.js';
 
 export const up = () => {
-    const firstIndex = user.cwd.indexOf(sep);
-    const lastIndex = user.cwd.lastIndexOf(sep);
-
-    user.cwd = user.cwd.slice(0, lastIndex + Number(lastIndex === firstIndex));
+    appData.cwd = resolve(appData.cwd, '..');
 };
+

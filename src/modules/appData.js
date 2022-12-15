@@ -2,7 +2,7 @@ import { homedir } from 'os';
 
 import { USERNAME_PREFIX, DEFAULT_USERNAME } from '../constants/index.js'
 
-class User {
+class AppData {
     constructor() {
         const userNameArg = process.argv.find(arg => arg.startsWith(USERNAME_PREFIX)) || '';
         const [ , userName = DEFAULT_USERNAME ] = userNameArg.split('=');
@@ -12,7 +12,7 @@ class User {
         this.__cwd = this.__homedir;
     }
 
-    get name () {
+    get username () {
         return this.__name;
     }
 
@@ -29,4 +29,4 @@ class User {
     }
 }
 
-export const user = new User();
+export const appData = new AppData();
