@@ -5,15 +5,15 @@ import { USERNAME_PREFIX, DEFAULT_USERNAME } from '../constants/index.js'
 class AppData {
     constructor() {
         const userNameArg = process.argv.find(arg => arg.startsWith(USERNAME_PREFIX)) || '';
-        const [ , userName = DEFAULT_USERNAME ] = userNameArg.split('=');
+        const [ , username = DEFAULT_USERNAME ] = userNameArg.split('=');
 
-        this.__name = userName;
+        this.__username = username;
         this.__homedir = homedir();
         this.__cwd = this.__homedir;
     }
 
     get username () {
-        return this.__name;
+        return this.__username;
     }
 
     get homedir () {
