@@ -17,7 +17,7 @@ export const cat = async (pathToFile) => {
             readable.on('end', () => {
                 printMessage('\n');
                 resolve();
-            })
+            });
             readable.on('error', reject);
         });
     } catch (error) {
