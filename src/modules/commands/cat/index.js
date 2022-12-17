@@ -4,6 +4,8 @@ import { resolve } from 'path';
 import { appData } from '../../appData.js';
 import { errorHandler } from '../../errorHandler.js';
 
+import { printMessage } from '../../../utils/printMessage.js';
+
 export const cat = async (pathToFile) => {
     const path = resolve(appData.cwd, pathToFile);
     const readable = createReadStream(path);
@@ -11,8 +13,11 @@ export const cat = async (pathToFile) => {
     readable.pipe(process.stdout);
 
     try {
-        return await new Promise((resolve, reject) => {
-            readable.on('end', resolve)
+        await new Promise((resolve, reject) => {
+            readable.on('end', () => {
+                printMessage('\n');
+                resolve();
+            })
             readable.on('error', reject);
         });
     } catch (error) {
