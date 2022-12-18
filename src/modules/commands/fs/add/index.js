@@ -1,8 +1,8 @@
 import { appendFile } from 'fs/promises';
 import { join } from 'path';
 
-import { appData } from '../../appData.js';
-import { errorHandler } from '../../errorHandler.js';
+import { appData } from '../../../appData.js';
+import { errorHandler } from '../../../errorHandler.js';
 
 export const add = async (fileName) => {
     const path = join(appData.cwd, fileName);

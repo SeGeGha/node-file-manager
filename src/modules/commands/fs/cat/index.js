@@ -1,10 +1,10 @@
 import { createReadStream } from 'fs';
 import { resolve } from 'path';
 
-import { appData } from '../../appData.js';
-import { errorHandler } from '../../errorHandler.js';
+import { appData } from '../../../appData.js';
+import { errorHandler } from '../../../errorHandler.js';
 
-import { printMessage } from '../../../utils/printMessage.js';
+import { printMessage } from '../../../../utils/printMessage.js';
 
 export const cat = async (pathToFile) => {
     const path = resolve(appData.cwd, pathToFile);

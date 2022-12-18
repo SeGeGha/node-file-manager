@@ -1,12 +1,7 @@
 import { validator } from './validator.js';
 
 import { up, cd, ls } from './ts/index.js';
-import { cat } from './cat/index.js';
-import { add } from './add/index.js';
-import { rn } from './rn/index.js';
-import { cp } from './cp/index.js';
-import { mv } from './mv/index.js';
-import { rm } from './rm/index.js';
+import { add, cat, cp, mv, rn, rm } from './fs/index.js';
 import { os } from './os/index.js';
 import { hash } from './hash/index.js';
 import { compress, decompress } from './zlib/index.js';

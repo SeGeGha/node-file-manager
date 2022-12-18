@@ -1,10 +1,10 @@
 import { rename } from 'fs/promises';
 import { resolve, dirname } from 'path';
 
-import { appData } from '../../appData.js';
-import { errorHandler } from '../../errorHandler.js';
+import { appData } from '../../../appData.js';
+import { errorHandler } from '../../../errorHandler.js';
 
-import { exists } from '../../../utils/exists.js';
+import { exists } from '../../../../utils/exists.js';
 
 export const rn = async (pathToFile, newFileName) => {
     const oldPath = resolve(appData.cwd, pathToFile);

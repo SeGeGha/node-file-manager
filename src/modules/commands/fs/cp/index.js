@@ -1,8 +1,8 @@
 import { createReadStream, createWriteStream } from 'fs';
 import { basename, resolve } from 'path';
 
-import { appData } from '../../appData.js';
-import { errorHandler } from '../../errorHandler.js';
+import { appData } from '../../../appData.js';
+import { errorHandler } from '../../../errorHandler.js';
 
 export const cp = async (pathToFile, pathToDir) => {
     const originalPath = resolve(appData.cwd, pathToFile);
