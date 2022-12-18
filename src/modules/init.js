@@ -1,7 +1,7 @@
 import { createInterface } from 'readline/promises';
 import { stdin as input, stdout as output } from 'process';
 
-import { appData } from "./appData.js";
+import { appData } from './appData.js';
 import { errorHandler } from './errorHandler.js';
 
 import { operationManager } from './commands/operationManager.js';

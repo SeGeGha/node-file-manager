@@ -9,8 +9,7 @@ import { mv } from './mv/index.js';
 import { rm } from './rm/index.js';
 import { os } from './os/index.js';
 import { hash } from './hash/index.js';
-import { compress } from './compress/index.js';
-import { decompress } from './decompress/index.js';
+import { compress, decompress } from './zlib/index.js';
 
 import { errorHandler } from '../errorHandler.js';
 
