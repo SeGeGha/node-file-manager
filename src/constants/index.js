@@ -1,6 +1,8 @@
 export const USERNAME_PREFIX = '--username';
 export const DEFAULT_USERNAME = 'Anonymous';
 
+export const BROTLI_EXTNAME = '.br';
+
 export const GHZ = 'GHz';
 export const CPU_SEPARATOR = 'CPU @';
 
