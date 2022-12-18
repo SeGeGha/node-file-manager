@@ -1,7 +1,9 @@
 import { basename, resolve } from 'path';
 import { pipeline } from 'stream/promises';
 import { createWriteStream, createReadStream } from 'fs';
-import { createBrotliCompress } from 'zlib';
+import { createBrotliDecompress } from 'zlib';
+
+import { resolveExtname } from './helpers/resolveExtname.js';
 
 import { appData } from '../../appData.js';
 import { errorHandler } from '../../errorHandler.js';
@@ -11,13 +13,13 @@ import { exists } from '../../../utils/exists.js';
 
 import { BROTLI_EXTNAME } from '../../../constants/index.js';
 
-export const compress = async (pathToFile, pathToDir) => {
-    const originalPath = resolve(appData.cwd, pathToFile);
-    const fileName = basename(pathToFile);
-    const targetPath = resolve(appData.cwd, pathToDir, fileName + BROTLI_EXTNAME);
-    const timeLabel = `Finish compression ${fileName} in`;
+export const decompress = async (pathToFile, pathToDir) => {
+    const originalPath = resolve(appData.cwd, resolveExtname(pathToFile));
+    const fileName = basename(originalPath).replace(BROTLI_EXTNAME, '');
+    const targetPath = resolve(appData.cwd, pathToDir, fileName);
+    const timeLabel = `Finish decompression ${fileName} in`;
 
-    printMessage('Start compression ${basename}...');
+    printMessage('Start decompression ${basename}...');
     console.time(timeLabel);
 
     try {
@@ -25,7 +27,7 @@ export const compress = async (pathToFile, pathToDir) => {
 
         await pipeline(
             createReadStream(originalPath),
-            createBrotliCompress(),
+            createBrotliDecompress(),
             createWriteStream(targetPath)
         );
 
