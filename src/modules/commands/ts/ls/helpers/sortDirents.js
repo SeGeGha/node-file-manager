@@ -1,6 +1,6 @@
-import { sortStrings } from '../../../../utils/sortStrings.js';
+import { sortStrings } from '../../../../../utils/sortStrings.js';
 
-import { DIRENT_PROPS } from '../../../../constants/index.js';
+import { DIRENT_PROPS } from '../../../../../constants/index.js';
 
 const props = [ DIRENT_PROPS.TYPE, DIRENT_PROPS.NAME ];
 

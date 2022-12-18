@@ -1,6 +1,4 @@
-import { up } from './up/index.js';
-import { cd } from './cd/index.js';
-import { ls } from './ls/index.js';
+import { up, cd, ls } from './ts/index.js';
 import { cat } from './cat/index.js';
 import { add } from './add/index.js';
 import { rn } from './rn/index.js';
