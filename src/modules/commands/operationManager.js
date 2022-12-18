@@ -10,6 +10,7 @@ import { rm } from './rm/index.js';
 import { os } from './os/index.js';
 import { hash } from './hash/index.js';
 import { compress } from './compress/index.js';
+import { decompress } from './decompress/index.js';
 
 import { errorHandler } from '../errorHandler.js';
 
@@ -28,4 +29,5 @@ export const operationManager = {
     os: arg => Object.values(OS_COMMAND_ARGUMENTS).includes(arg) ? os(arg) : errorHandler.invalidInput(),
     hash: arg => arg ? hash(arg) : errorHandler.invalidInput(),
     compress: arg => arg.split(' ').length === 2 ? compress(...arg.split(' ')) : errorHandler.invalidInput(),
+    decompress: arg => arg.split(' ').length === 2 ? decompress(...arg.split(' ')) : errorHandler.invalidInput(),
 };
