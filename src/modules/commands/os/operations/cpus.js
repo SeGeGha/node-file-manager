@@ -1,9 +1,9 @@
-import { cpus } from 'os';
+import { cpus as getCpus } from 'os';
 
 import { convertCpuInfo } from '../helpers/convertCpuInfo.js';
 
-export const executeCpusOperation = () => {
-    const outputData = cpus().map(convertCpuInfo);
+export const cpus = () => {
+    const outputData = getCpus().map(convertCpuInfo);
 
     console.dir(outputData);
 };

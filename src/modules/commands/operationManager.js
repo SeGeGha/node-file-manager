@@ -13,8 +13,6 @@ import { compress, decompress } from './zlib/index.js';
 
 import { errorHandler } from '../errorHandler.js';
 
-import { OS_COMMAND_ARGUMENTS } from '../../constants/index.js';
-
 export const operationManager = {
     up: arg => validator.isEmptyArg(arg, up),
     cd: arg => validator.isNotEmptyArg(arg, cd),
@@ -25,7 +23,7 @@ export const operationManager = {
     cp: arg => arg.split(' ').length === 2 ? cp(...arg.split(' ')) : errorHandler.invalidInput(),
     mv: arg => arg.split(' ').length === 2 ? mv(...arg.split(' ')) : errorHandler.invalidInput(),
     rm: arg => validator.isNotEmptyArg(arg, rm),
-    os: arg => validator.hasArgInList(arg, Object.values(OS_COMMAND_ARGUMENTS), os),
+    os: arg => validator.isNotEmptyArg(arg, os),
     hash: arg => validator.isNotEmptyArg(arg, hash),
     compress: arg => arg.split(' ').length === 2 ? compress(...arg.split(' ')) : errorHandler.invalidInput(),
     decompress: arg => arg.split(' ').length === 2 ? decompress(...arg.split(' ')) : errorHandler.invalidInput(),

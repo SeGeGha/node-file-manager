@@ -2,4 +2,4 @@ import { EOL } from 'os';
 
 import { printMessage } from '../../../../utils/printMessage.js';
 
-export const executeEOLOperation = () => printMessage(JSON.stringify(EOL));
+export const eol = () => printMessage(JSON.stringify(EOL));
