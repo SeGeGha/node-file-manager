@@ -17,13 +17,16 @@ export const decompress = async (pathToFile, pathToDir) => {
     const originalPath = resolve(appData.cwd, resolveExtname(pathToFile));
     const fileName = basename(originalPath).replace(BROTLI_EXTNAME, '');
     const targetPath = resolve(appData.cwd, pathToDir, fileName);
-    const timeLabel = `Finish decompression ${fileName} in`;
-
-    printMessage('Start decompression ${basename}...');
-    console.time(timeLabel);
 
     try {
-        if (await exists(targetPath)) throw new Error();
+        if (originalPath !== targetPath && await exists(targetPath)) throw new Error();
+
+        const timeLabel = `Finish decompression ${fileName} in`;
+
+        console.time(timeLabel);
+        process.stdin.pause();
+
+        printMessage(`Start decompression ${fileName}...`);
 
         await pipeline(
             createReadStream(originalPath),
@@ -34,6 +37,7 @@ export const decompress = async (pathToFile, pathToDir) => {
         console.timeEnd(timeLabel)
     } catch (error) {
         errorHandler.failedOperation();
-
+    } finally {
+        process.stdin.resume();
     }
 };
