@@ -1,4 +1,4 @@
-import { validator } from './validator.js';
+import { validate, validator } from './validator.js';
 
 import { up, cd, ls } from './ts/index.js';
 import { add, cat, cp, mv, rn, rm } from './fs/index.js';
@@ -6,20 +6,18 @@ import { os } from './os/index.js';
 import { hash } from './hash/index.js';
 import { compress, decompress } from './zlib/index.js';
 
-import { errorHandler } from '../errorHandler.js';
-
 export const operationManager = {
-    up: arg => validator.isEmptyArg(arg, up),
-    cd: arg => validator.isNotEmptyArg(arg, cd),
-    ls: arg => validator.isEmptyArg(arg, ls),
-    cat: arg => validator.isNotEmptyArg(arg, cat),
-    add: arg => validator.isNotEmptyArg(arg, add),
-    rn: arg => arg.split(' ').length === 2 ? rn(...arg.split(' ')) : errorHandler.invalidInput(),
-    cp: arg => arg.split(' ').length === 2 ? cp(...arg.split(' ')) : errorHandler.invalidInput(),
-    mv: arg => arg.split(' ').length === 2 ? mv(...arg.split(' ')) : errorHandler.invalidInput(),
-    rm: arg => validator.isNotEmptyArg(arg, rm),
-    os: arg => validator.isNotEmptyArg(arg, os),
-    hash: arg => validator.isNotEmptyArg(arg, hash),
-    compress: arg => arg.split(' ').length === 2 ? compress(...arg.split(' ')) : errorHandler.invalidInput(),
-    decompress: arg => arg.split(' ').length === 2 ? decompress(...arg.split(' ')) : errorHandler.invalidInput(),
+    up: arg => validate(up, arg, [ validator.isEmptyArg ]),
+    cd: arg => validate(cd, arg, [ validator.isNotEmptyArg ]),
+    ls: arg => validate(ls, arg, [ validator.isEmptyArg ]),
+    cat: arg => validate(cat, arg, [ validator.isNotEmptyArg ]),
+    add: arg => validate(add, arg, [ validator.isNotEmptyArg ]),
+    rn: args => validate(rn, args, [ validator.hasExistPath, validator.isNotEmptyArg ]),
+    cp: args => validate(cp, args, [ validator.hasExistPath, validator.hasExistPath ]),
+    mv: args => validate(mv, args, [ validator.hasExistPath, validator.hasExistPath ]),
+    rm: arg => validate(rm, arg, [ validator.isNotEmptyArg ]),
+    os: arg => validate(os, arg, [ validator.isNotEmptyArg ]),
+    hash: arg => validate(hash, arg, [ validator.isNotEmptyArg ]),
+    compress: args => validate(compress, args, [ validator.hasExistPath, validator.hasExistPath ]),
+    decompress: args => validate(decompress, args, [ validator.hasExistPath, validator.hasExistPath ]),
 };
