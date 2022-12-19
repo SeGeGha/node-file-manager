@@ -19,9 +19,6 @@ export const compress = async (pathToFile, pathToDir) => {
     try {
         if (originalPath !== targetPath && await exists(targetPath)) throw new Error();
 
-        const timeLabel = `Finish compression ${fileName} in`;
-
-        console.time(timeLabel);
         process.stdin.pause();
 
         printMessage(`Start compression ${fileName}...`);
@@ -36,7 +33,7 @@ export const compress = async (pathToFile, pathToDir) => {
             createWriteStream(targetPath)
         );
 
-        console.timeEnd(timeLabel)
+        printMessage(`Finish compression ${fileName}!`);
     } catch (error) {
         errorHandler.failedOperation();
     } finally {

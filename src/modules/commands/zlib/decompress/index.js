@@ -21,9 +21,6 @@ export const decompress = async (pathToFile, pathToDir) => {
     try {
         if (originalPath !== targetPath && await exists(targetPath)) throw new Error();
 
-        const timeLabel = `Finish decompression ${fileName} in`;
-
-        console.time(timeLabel);
         process.stdin.pause();
 
         printMessage(`Start decompression ${fileName}...`);
@@ -34,7 +31,7 @@ export const decompress = async (pathToFile, pathToDir) => {
             createWriteStream(targetPath)
         );
 
-        console.timeEnd(timeLabel)
+        printMessage(`Finish decompression ${fileName}!`);
     } catch (error) {
         errorHandler.failedOperation();
     } finally {
