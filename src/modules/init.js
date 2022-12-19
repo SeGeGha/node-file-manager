@@ -24,9 +24,11 @@ export const init = () => {
 
         const [ command, argLine ] = parseCommandLine(line);
 
-        await execute(operationManager[command], argLine);
-
-        printMessage(appData.messages.cwd);
+        try {
+            await execute(operationManager[command], argLine);
+        } finally {
+            printMessage(appData.messages.cwd);
+        }
     });
 
     readlineInterface.on('close', () => {
