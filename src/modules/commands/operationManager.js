@@ -1,6 +1,6 @@
 import { validate, validator } from './validator.js';
 
-import { up, cd, ls } from './ts/index.js';
+import { up, cd, ls } from './nwd/index.js';
 import { add, cat, cp, mv, rn, rm } from './fs/index.js';
 import { os } from './os/index.js';
 import { hash } from './hash/index.js';
